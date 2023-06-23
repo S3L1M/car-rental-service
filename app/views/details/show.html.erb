@@ -1,0 +1,18 @@
+<h1>Car Details</h1>
+<p>Make: <%= @car.make %></p>
+<p>Model: <%= @car.model %></p>
+<p>Kilometers Traveled: <%= @car.kilometers_traveled %></p>
+<p>Location: (<%= @car.latitude %>, <%= @car.longitude %>)</p>
+<p>Available from: <%= @car.available_from.to_date %></p>
+<p>Available until: <%= @car.available_until.to_date %></p>
+
+<h2>Car Images</h2>
+<% if @car.images.attached? %>
+  <div id="image-slider">
+    <% @car.images.each do |image| %>
+      <%= image_tag(image) %>
+    <% end %>
+  </div>
+<% else %>
+  <p>No images available for this car.</p>
+<% end %>
