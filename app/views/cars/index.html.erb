@@ -1,13 +1,8 @@
-<h1>Cars</h1>
+<h1>Cars within 50 Kilometers</h1>
 
-<% @cars.each do |car| %>
-  <div class="car">
-    <h3><%= car.make %> <%= car.model %></h3>
-    <p>Kilometers Traveled: <%= car.kilometers_traveled %></p>
-    <p>Available From: <%= car.available_from %></p>
-    <p>Available Until: <%= car.available_until %></p>
-    <% if car.images.attached? %>
-      <%= image_tag car.images.first %>
-    <% end %>
+<% @nearby_cars.each do |car| %>
+  <div class="car-thumbnail">
+    <img src="<%= car.images.first.url %>" alt="<%= car.make %> <%= car.model %>">
+    <p><%= car.make %> <%= car.model %></p>
   </div>
 <% end %>
