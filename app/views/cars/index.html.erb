@@ -4,5 +4,6 @@
   <div class="car-thumbnail">
     <img src="<%= car.images.first.url %>" alt="<%= car.make %> <%= car.model %>">
     <p><%= car.make %> <%= car.model %></p>
+    <%= link_to "details", details_path(@show, id: car.id) %>
   </div>
 <% end %>
