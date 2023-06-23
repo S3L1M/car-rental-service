@@ -1,5 +1,8 @@
 class CarsController < ApplicationController
+  include ActiveStorage::SetCurrent
+
   def index
+    # at Al-Andalus Mall
     fixed_latitude = 21.507989 # Fixed latitude value
     fixed_longitude = 39.218917 # Fixed longitude value
 
