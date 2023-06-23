@@ -16,3 +16,42 @@
 <% else %>
   <p>No images available for this car.</p>
 <% end %>
+
+
+<h2>Book Car</h2>
+
+<%= form_tag '', id: "booking_form" %>
+  <div>
+    <%= label_tag :start_date, "Start Date" %>
+    <%= date_field_tag :start_date, @car.available_from.to_date %>
+  </div>
+  
+  <div>
+    <%= label_tag :end_date, "End Date" %>
+    <%= date_field_tag :end_date, @car.available_until.to_date %>
+  </div>
+  
+  <%= submit_tag "Book Car" %>
+
+<script>
+  function validateDateRange() {
+    var startDate = new Date(document.getElementById('start_date').value);
+    var endDate = new Date(document.getElementById('end_date').value);
+    var availableFrom = new Date('<%= @car.available_from %>');
+    var availableUntil = new Date('<%= @car.available_until %>');
+
+    if (startDate < availableFrom || endDate > availableUntil) {
+      alert('The selected date range is not available. Please select a range within the available dates.');
+      return false;
+    }
+
+    alert('Car booked');
+    return true;
+  }
+
+  document.getElementById('booking_form').addEventListener('submit', function(event) {
+    if (!validateDateRange()) {
+      event.preventDefault(); // Prevent form submission
+    }
+  });
+</script>
